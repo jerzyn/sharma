@@ -43,7 +43,7 @@ app.post('/pre-register', function (req, res) {
       });
     }
   });
-  res.sendStatus(201);
+  // res.sendStatus(201);
   res.redirect('http://sharmaclimbingbcn.com/gym');
 });
 
