@@ -22,32 +22,23 @@ app.post('/pre-register', function (req, res) {
 	var postcode = req.body.postcode;
 	var city = req.body.city;
 	var telephone = req.body.telephone;
-	var user = first_name + ';' + last_name + ';' + birthdate + ';' + email + ';' + status + ';' + street + ';' + postcode + ';' + city + ';' + telephone + '\n';
-  console.log('post received!');
-  console.log(first_name);
-  console.log(last_name);
-  console.log(birthdate);
-  console.log(email);
-  console.log(status);
-  console.log(street);
-  console.log(postcode);
-  console.log(city);
-  console.log(telephone);
-  fs.readFile('/register.csv', function (err, data) {
-  	if (data) {
-	  	fs.appendFile('register.csv', user , function (err) {
-			  if (err) {
-			  	console.log(err);
-			  	return res.sendStatus(err.status);
-			  }
-			});
+  // Normal;;LAST NAME;NAME;DATEOFBIRTH(DDMMYYY);STREET;CODIGOPOSSTAL;PHONENUMBER;MAIL
+	var user = status + ';' + last_name  + ';' + first_name + ';' + birthdate + ';' +  street + ';' + postcode + ';' + telephone + ';' + city + ';' + email + '\n';
+  fs.readFile('./register.csv', function (err, data) {
+  	if (err) {
+	  	fs.writeFile('register.csv', user , function (err) {
+        if (err) {
+          console.log(err);
+          return res.sendStatus(err.status);
+        }
+      });
   	} else {
-  	  fs.writeFile('register.csv', user , function (err) {
-			  if (err) {
-			  	console.log(err);
-			  	return res.sendStatus(err.status);
-			  }
-			});
+      fs.appendFile('register.csv', user , function (err) {
+        if (err) {
+          console.log(err);
+          return res.sendStatus(err.status);
+        }
+      });  	  
   	}
   });
   res.sendStatus(201);
@@ -56,22 +47,23 @@ app.post('/pre-register', function (req, res) {
 app.get('/register.csv', function (req, res) {
   var options = {
     root: __dirname + '/',
-    headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true
-    }
+    // headers: {
+    //     'x-timestamp': Date.now(),
+    //     'x-sent': true
+    // }
   };	
-	res.sendFile('register.csv', options, function (err) {
+  res.sendFile('register.csv', options, function (err) {
     if (err) {
       console.log(err);
       res.status(err.status).end();
     }
     else {
-      console.log('Sent:', fileName);
-      res.sendStatus(200);
+      console.log('Sent:', 'register.csv');
+      res.status(200);
+
     }
   });
-})
+});
 
 
 
