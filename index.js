@@ -32,12 +32,15 @@ app.post('/pre-register', function (req, res) {
         if (err) {
           console.log(err);
           return res.sendStatus(err.status);
+        } else {
+          res.redirect('http://sharmaclimbingbcn.com/gym');
         }
       });
     } else {
       fs.appendFile('register.csv', user , function (err) {
         if (err) {
           console.log(err);
+          res.redirect('http://sharmaclimbingbcn.com/gym');
           return res.sendStatus(err.status);
         }
       });
