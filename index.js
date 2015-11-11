@@ -32,8 +32,6 @@ app.post('/pre-register', function (req, res) {
         if (err) {
           console.log(err);
           return res.sendStatus(err.status);
-        } else {
-          res.redirect('http://sharmaclimbingbcn.com/gym');
         }
       });
     } else {
@@ -41,13 +39,12 @@ app.post('/pre-register', function (req, res) {
         if (err) {
           console.log(err);
           return res.sendStatus(err.status);
-        } else {
-          res.redirect('http://sharmaclimbingbcn.com/gym');
         }
       });
     }
   });
   res.sendStatus(201);
+  res.redirect('http://sharmaclimbingbcn.com/gym');
 });
 
 app.get('/register.csv', function (req, res) {
