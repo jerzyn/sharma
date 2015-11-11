@@ -1,0 +1,5 @@
+curl -v -X POST "localhost:3000/pre-register" -H "Content-Type: application/x-www-form-urlencoded" --data "first_name=Andrzej&lasJarzyna&birthdate=03.06.1985&email=andrew.jarzyna%40gmail.com&status=normal
+&street=marroc+205&postcode=20934&city=Barcelona&telephone=123456789&pre-register=Pre-register"
+
+curl -v -X GET "localhost:3000/register.csv"
+

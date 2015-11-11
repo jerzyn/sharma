@@ -1,0 +1,15 @@
+{
+  "name": "gym-pre-registration",
+  "version": "0.0.1",
+  "description": "Gym pre-registration handling app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrzej Jarzyna <andrew.jarzyna@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
