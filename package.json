@@ -4,7 +4,7 @@
   "description": "Gym pre-registration handling app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Andrzej Jarzyna <andrew.jarzyna@gmail.com>",
   "license": "ISC",
