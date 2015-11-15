@@ -24,8 +24,10 @@ app.post('/pre-register', function (req, res) {
   var postcode = req.body.postcode;
   var city = req.body.city;
   var telephone = req.body.telephone;
+  var today = new Date();
   // Normal;;LAST NAME;NAME;DATEOFBIRTH(DDMMYYY);STREET;CODIGOPOSSTAL;PHONENUMBER;MAIL
-  var user = status + ';' + last_name  + ';' + first_name + ';' + birthdate + ';' +  street + ';' + postcode + ';' + telephone + ';' + city + ';' + email + '\n';
+  var user = "ForeignID;Joined;Gruppe;Name;Vorname;Gebtag;Strasse;PLZ;Stadt;Tel;Email;Bemerkung\n";
+  user += Math.floor(Math.random()*1000000000000) + ';' + today.getDate() + today.getMonth() + today.getFullYear() + ";" + status + ";" + first_name + ';' + last_name  + ';' + birthdate + ';' +  street + ';' + postcode + ';' + city + ';' + telephone + ';' + email + "no notes" + '\n';
   fs.readFile('./register.csv', function (err, data) {
     if (err) {
       fs.writeFile('register.csv', user , function (err) {
@@ -60,7 +62,6 @@ app.get('/register.csv', function (req, res) {
     else {
       console.log('Sent:', 'register.csv');
       res.status(200);
-
     }
   });
 });
