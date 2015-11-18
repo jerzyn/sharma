@@ -25,12 +25,15 @@ app.post('/pre-register', function (req, res) {
   var city = req.body.city;
   var telephone = req.body.telephone;
   var today = new Date();
+  if (req.body.lang) {
+    var lang = req.body.lang;
+  }
   // Normal;;LAST NAME;NAME;DATEOFBIRTH(DDMMYYY);STREET;CODIGOPOSSTAL;PHONENUMBER;MAIL
-  var user = "ForeignID;Joined;Gruppe;Name;Vorname;Gebtag;Strasse;PLZ;Stadt;Tel;Email;Bemerkung\n";
-  user += Math.floor(Math.random()*1000000000000) + ';' + today.getDate() + today.getMonth() + today.getFullYear() + ";" + status + ";" + first_name + ';' + last_name  + ';' + birthdate + ';' +  street + ';' + postcode + ';' + city + ';' + telephone + ';' + email + "no notes" + '\n';
+  var user; //= "ForeignID;Joined;Gruppe;Name;Vorname;Gebtag;Strasse;PLZ;Stadt;Tel;Email;Bemerkung\n";
+  user = Math.floor(Math.random()*1000000000000) + ';' + today.getDate() + today.getMonth() + today.getFullYear() + ";" + status + ";" + first_name + ';' + last_name  + ';' + birthdate + ';' +  street + ';' + postcode + ';' + city + ';' + telephone + ';' + email + ";no notes" + '\n';
   fs.readFile('./register.csv', function (err, data) {
     if (err) {
-      fs.writeFile('register.csv', user , function (err) {
+      fs.writeFile('register.csv', "ForeignID;Joined;Gruppe;Name;Vorname;Gebtag;Strasse;PLZ;Stadt;Tel;Email;Bemerkung\n" + user , function (err) {
         if (err) {
           console.log(err);
           return res.sendStatus(err.status);
@@ -46,7 +49,15 @@ app.post('/pre-register', function (req, res) {
     }
   });
   // res.sendStatus(201);
-  res.redirect('http://sharmaclimbingbcn.com/gym');
+  if (lang) {
+    if (lang == "cat") {
+      res.redirect('http://sharmaclimbingbcn.com/cat/exit');
+    } else if (lang == "es") {
+      res.redirect('http://sharmaclimbingbcn.com/es/exito');
+    } 
+  } else {
+    res.redirect('http://sharmaclimbingbcn.com/en/success');
+  }
 });
 
 app.get('/register.csv', function (req, res) {
