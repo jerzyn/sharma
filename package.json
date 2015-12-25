@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Gym pre-registration handling app",
   "main": "index.js",
+  "engines": {
+    "node": "4.2.2"
+  }
   "scripts": {
     "start": "node index.js"
   },
