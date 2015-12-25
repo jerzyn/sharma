@@ -57,7 +57,7 @@ app.post('/pre-register', function (req, res) {
 app.get('/register.csv', function (req, res) {
   'use strict';
   var options = {
-    root: __dirname + '/'
+    root: '/'
   };
   res.sendFile('register.csv', options, function (err) {
     if (err) {
