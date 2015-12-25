@@ -4,8 +4,9 @@
   "description": "Gym pre-registration handling app",
   "main": "index.js",
   "engines": {
-    "node": "4.2.2"
-  }
+    "node": "4.2.2",
+    "npm": "2.14.7"
+  },
   "scripts": {
     "start": "node index.js"
   },
